@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wedding Invitation</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Hiroki & Kohagi Wedding Invitation">
+  <meta property="og:description" content="Hiroki & Kohagi Wedding Invitation">
+  <meta property="og:image" content="https://ユーザー名.github.io/wedding-invitation/assets/ogp.jpg">
+  <meta property="og:url" content="https://ユーザー名.github.io/wedding-invitation/">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="./assets/favicon.png" sizes="512x512" type="image/png">
+</head>
+
+<body class="bg-page">
+  <!-- メニュー以外暗く -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <!-- header -->
+  <header class="header">
+    <a class="logo" href="#top" aria-label="Top">
+      <img src="./assets/icons/top-btn.png" alt="Top">
+    </a>
+
+    <!-- ハンバーガー -->
+    <button class="menuBtn" id="menuBtn" aria-label="menu" aria-controls="menuModal" aria-expanded="false">
+      <img src="./assets/icons/menu.png" alt="menu">
+    </button>
+  </header>
+
+  <!-- メニューモーダル -->
+  <aside class="menuModal" id="menuModal" aria-hidden="true">
+    <button class="menuClose" id="menuClose" aria-label="Close menu">×</button>
+    <nav class="menuList">
+      <a href="#top" class="menuLink font-en fadeUp">Top</a>
+      <a href="#host" class="menuLink font-en fadeUp">Host</a>
+      <a href="#gallery" class="menuLink font-en fadeUp">Gallery</a>
+      <a href="#events" class="menuLink font-en fadeUp">Events</a>
+      <a href="#location" class="menuLink font-en fadeUp">Location</a>
+      <a href="#rsvp" class="menuLink font-en fadeUp">RSVP</a>
+    </nav>
+  </aside>
+
+  <!-- hero：写真切り替わる -->
+  <main id="top">
+    <section class="hero" id="hero">
+      <div class="heroBg heroBg--a"></div>
+      <div class="heroBg heroBg--b"></div>
+
+      <div class="hero__shade"></div>
+      <div class="hero__content">
+        <p class="hero__kicker font-en fadeUp">Wedding</p>
+        <h1 class="hero__title font-en fadeUp">Invitation</h1>
+      </div>
+    </section>
+
+    <!-- countdown -->
+    <section class="countdown fadeUp">
+      <h2 class="sectionTitle font-en">Countdown</h2>
+      <div class="countdown__grid" id="countdown">
+        <div class="cdBox"><span class="cdNum" id="cdDays">--</span><span class="cdUnit">days</span></div>
+        <div class="cdBox"><span class="cdNum" id="cdHours">--</span><span class="cdUnit">hours</span></div>
+        <div class="cdBox"><span class="cdNum" id="cdMins">--</span><span class="cdUnit">min</span></div>
+        <div class="cdBox"><span class="cdNum" id="cdSecs">--</span><span class="cdUnit">sec</span></div>
+      </div>
+    </section>
+
+    <!-- Greeting -->
+    <section class="section fadeUp" id="greeting">
+
+      <div class="card greetingCard fadeUp">
+        <h2 class="greetingTitle font-en">Greeting</h2>
+
+        <p class="greetingText">皆様いかがお過ごしでしょうか<br>
+          この度私達は結婚式を<br>
+          執り行うこととなりました
+        </p>
+
+        <p class="greetingText">つきましては<br>
+          お世話になっている皆様をお招きして<br>
+          心ばかりの祝宴を<br>
+          催したいと存じます
+        </p>
+
+        <p class="greetingText">ご多用中誠に恐縮ではございますが<br>
+          是非ご出席いただきたく<br>
+          ご案内申し上げます
+        </p>
+      </div>
+    </section>
+
+    <!-- Host -->
+    <section class="section hostSection" id="host">
+      <div class="sectionHead fadeUp">
+        <img class="sectionWave" src="./assets/icons/wave.png" alt="">
+        <h2 class="sectionTitle sectionTitle--overlay font-en">Host</h2>
+      </div>
+
+      <div class="hostGrid2">
+        <!-- Groom block -->
+        <div class="hostBlock fadeUp">
+          <div class="hostRow">
+            <div class="hostPhotoWrap">
+              <img class="hostPhoto" src="./assets/host/groom.JPG" alt="Groom">
+            </div>
+            <div class="hostText">
+              <p class="hostRole font-en">Groom</p>
+              <p class="hostNameJp">望月 大暉</p>
+            </div>
+          </div>
+
+          <p class="hostMessage hostMessage--center">
+            この度はわたしたちの結婚式にご参加くださり<br>
+            誠にありがとうございます。<br>
+            当日はどうぞ楽しんでいただければ幸いです。
+          </p>
+        </div>
+
+        <!-- Bride block -->
+        <div class="hostBlock fadeUp">
+          <div class="hostRow hostRow--reverse">
+            <div class="hostPhotoWrap">
+              <img class="hostPhoto" src="./assets/host/bride.JPG" alt="Bride">
+            </div>
+            <div class="hostText">
+              <p class="hostRole font-en">Bride</p>
+              <p class="hostNameJp">森川 小萩</p>
+            </div>
+          </div>
+
+          <p class="hostMessage hostMessage--center">
+            日頃からお世話になっている皆様に<br>
+            お会いできることを心から楽しみにしています。<br>
+            どうぞお気をつけてお越しください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section" id="gallery">
+      <div class="sectionHead fadeUp">
+        <img class="sectionWave" src="./assets/icons/wave.png" alt="">
+        <h2 class="sectionTitle sectionTitle--overlay font-en">Gallery</h2>
+      </div>
+
+      <div class="gallery2rows fadeUp">
+        <div class="galleryRowWrap">
+          <div class="galleryRow galleryRow--toRight">
+            <img src="./assets/gallery/c-1.JPG" alt="">
+            <img src="./assets/gallery/c-2.JPG" alt="">
+            <img src="./assets/gallery/c-3.JPG" alt="">
+            <img src="./assets/gallery/c-4.JPG" alt="">
+            <img src="./assets/gallery/c-5.JPG" alt="">
+            <img src="./assets/gallery/c-6.JPG" alt="">
+            <img src="./assets/gallery/c-7.JPG" alt="">
+            <img src="./assets/gallery/c-8.JPG" alt="">
+            <img src="./assets/gallery/c-9.JPG" alt="">
+            <img src="./assets/gallery/c-10.JPG" alt="">
+
+            <!-- この下に同じのをコピペ （ループ対策）-->
+            <img src="./assets/gallery/c-1.JPG" alt="">
+            <img src="./assets/gallery/c-2.JPG" alt="">
+            <img src="./assets/gallery/c-3.JPG" alt="">
+            <img src="./assets/gallery/c-4.JPG" alt="">
+            <img src="./assets/gallery/c-5.JPG" alt="">
+            <img src="./assets/gallery/c-6.JPG" alt="">
+            <img src="./assets/gallery/c-7.JPG" alt="">
+            <img src="./assets/gallery/c-8.JPG" alt="">
+            <img src="./assets/gallery/c-9.JPG" alt="">
+            <img src="./assets/gallery/c-10.JPG" alt="">
+          </div>
+        </div>
+
+        <div class="galleryRowWrap">
+          <div class="galleryRow galleryRow--toLeft">
+            <img src="./assets/gallery/g-1.JPG" alt="">
+            <img src="./assets/gallery/g-2.JPG" alt="">
+            <img src="./assets/gallery/g-3.JPG" alt="">
+            <img src="./assets/gallery/g-4.JPG" alt="">
+            <img src="./assets/gallery/g-5.JPG" alt="">
+            <img src="./assets/gallery/g-6.JPG" alt="">
+            <img src="./assets/gallery/g-7.JPG" alt="">
+            <img src="./assets/gallery/g-8.JPG" alt="">
+            <img src="./assets/gallery/g-9.JPG" alt="">
+
+            <!-- この下に同じのをコピペ（ループ対策） -->
+            <img src="./assets/gallery/g-1.JPG" alt="">
+            <img src="./assets/gallery/g-2.JPG" alt="">
+            <img src="./assets/gallery/g-3.JPG" alt="">
+            <img src="./assets/gallery/g-4.JPG" alt="">
+            <img src="./assets/gallery/g-5.JPG" alt="">
+            <img src="./assets/gallery/g-6.JPG" alt="">
+            <img src="./assets/gallery/g-7.JPG" alt="">
+            <img src="./assets/gallery/g-8.JPG" alt="">
+            <img src="./assets/gallery/g-9.JPG" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section class="section" id="events">
+      <div class="sectionHead fadeUp">
+        <img class="sectionWave" src="./assets/icons/wave.png" alt="">
+        <h2 class="sectionTitle sectionTitle--overlay font-en">Events</h2>
+      </div>
+
+      <div class="eventsGrid">
+
+        <!-- Ceremony -->
+        <div class="card eventCard fadeUp">
+          <h3 class="eventTitle font-en">Ceremony</h3>
+          <p class="eventSub">挙式</p>
+
+          <dl class="eventDl">
+            <div>
+              <dt class="font-en">Open</dt>
+              <dd class="eventTime">14 : 20</dd>
+            </div>
+            <div>
+              <dt class="font-en">Start</dt>
+              <dd class="eventTime">14 : 30</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Wedding Reception -->
+        <div class="card eventCard fadeUp">
+          <h3 class="eventTitle font-en">Wedding Reception</h3>
+          <p class="eventSub">披露宴</p>
+
+          <dl class="eventDl">
+            <div>
+              <dt class="font-en">Open</dt>
+              <dd class="eventTime">15 : 30</dd>
+            </div>
+            <div>
+              <dt class="font-en">Start</dt>
+              <dd class="eventTime">16 : 00</dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section class="section" id="location">
+      <div class="sectionHead fadeUp">
+        <img class="sectionWave" src="./assets/icons/wave.png" alt="">
+        <h2 class="sectionTitle sectionTitle--overlay font-en">Location</h2>
+      </div>
+
+      <div class="mapCard">
+        <iframe
+          title="Map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Tokyo%20DisneySea%20Hotel%20MiraCosta&output=embed">
+        </iframe>
+      </div>
+      <p class="locationName font-en">
+        東京ディズニーシー ホテルミラコスタ
+      </p>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section" id="rsvp">
+      <div class="sectionHead fadeUp">
+        <img class="sectionWave" src="./assets/icons/wave.png" alt="">
+        <h2 class="sectionTitle sectionTitle--overlay font-en">RSVP</h2>
+      </div>
+      <div class="rsvpIntro">
+        <p>
+          お手数ですが 下記お日にちに<br>
+          出欠情報のご連絡をお願い申し上げます
+        </p>
+
+        <p class="rsvpDate">
+          2026年03月20日（木）
+        </p>
+
+        <p class="rsvpNote">
+          期日までのご連絡が難しい場合は<br>
+          ご一報いただけますと幸いです
+        </p>
+      </div>
+
+      <div class="entryTitle">
+        <p class="font-en">Entry form</p>
+        <span class="entryLine"></span>
+      </div>
+
+      <div class="rsvpWrap">
+        <form id="rsvpForm" class="rsvpForm" novalidate>
+
+          <div class="rsvpStep" data-step="1">
+            <!-- 名前 -->
+            <label class="field">
+              <span>お名前</span>
+              <input name="name" required>
+            </label>
+
+            <label class="field">
+              <span>ふりがな</span>
+              <input name="furigana" required>
+            </label>
+
+            <!-- ゲスト区分 -->
+            <div class="field">
+              <label>ゲスト区分</label>
+              <select name="guestType" required>
+                <option value="">選択してください</option>
+                <option value="groom">新郎側</option>
+                <option value="bride">新婦側</option>
+              </select>
+            </div>
+
+            <!-- 電話番号 -->
+            <div class="field">
+              <label>電話番号</label>
+              <input type="tel" name="tel" placeholder="090-1234-5678">
+            </div>
+
+            <!-- 郵便番号 -->
+            <div class="field">
+              <label>郵便番号</label>
+              <input id="zip" type="text" name="zip" placeholder="123-4567" inputmode="numeric" autocomplete="postal-code">
+            </div>
+            
+            <!-- 住所 -->
+            <div class="field">
+              <label>ご住所</label>
+              <textarea id="address" name="address" rows="2" autocomplete="street-address"></textarea>
+            </div>
+
+            <p class="formHint" id="zipHint"></p>
+
+            <!-- アレルギー -->
+            <div class="field">
+              <label>アレルギー</label>
+              <textarea name="allergy" rows="2" placeholder="なし / えび 等"></textarea>
+            </div>
+
+            <!-- お連れ様 -->
+            <div class="field">
+              <label>お連れ様（お名前を記入してください）</label>
+              <textarea name="companions" rows="2"></textarea>
+            </div>
+
+            <!-- メッセージ -->
+            <div class="field">
+              <label>メッセージ（新郎新婦へのメッセージをご記入ください）</label>
+              <textarea name="message" rows="3"></textarea>
+            </div>
+
+            <!-- 写真添付 -->
+            <!-- <div class="field">
+              <label>お写真（新郎新婦との思い出）</label>
+              <input id="photo" type="file" name="photo" accept="image/*">
+            </div> -->
+
+            <div class="entryTitle">
+              <span class="entryLineEnd"></span>
+            </div>
+
+            <div class="attendSelect">
+              <input type="radio" name="attend" id="attend-yes" value="attend">
+              <label for="attend-yes">
+                <span class="jp">ご出席</span>
+                <span class="en font-en">Attend</span>
+              </label>
+
+              <input type="radio" name="attend" id="attend-no" value="decline">
+              <label for="attend-no">
+                <span class="jp">ご欠席</span>
+                <span class="en font-en">Decline</span>
+              </label>
+
+              <input type="radio" name="attend" id="attend-hold" value="hold">
+              <label for="attend-hold">
+                <span class="jp">保留</span>
+                <span class="en font-en">Hold</span>
+              </label>
+            </div>
+
+            <button type="button" class="btn" id="toConfirm">確認する</button>
+            <p class="formMsg" id="formMsg"></p>
+            </div>
+
+          <!-- Step 2 確認 -->
+          <div class="rsvpStep" data-step="2" hidden>
+            <div class="confirmBox" id="confirmBox"></div>
+            <div class="btnRow">
+              <button type="button" class="btn btn--ghost" id="backToEdit">修正</button>
+              <button type="submit" class="btn" id="submitBtn">送信</button>
+            </div>
+            <p class="formMsg" id="submitMsg"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer thankYou">
+      <img src="./assets/icons/heart.png" alt="" class="thankYou__heart">
+      <small class="thankYou__text font-en">Thank you</small>
+    </footer>
+  </main>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>

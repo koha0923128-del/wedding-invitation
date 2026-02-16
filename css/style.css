@@ -1,0 +1,735 @@
+:root{
+  --paper: rgba(255,255,255,.85);
+  --text: #238496;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+  --radius: 18px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family: "Shippori Mincho", serif;
+  color: var(--text);
+}
+
+.bg-page{
+  background-image: url("../assets/bg/repeat.jpeg");
+  background-repeat: repeat;
+  background-size: 420px auto;
+  background-attachment: fixed;
+}
+
+.header{
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 0 14px;
+  z-index: 50;
+}
+ /* =============== LOGO =============== */
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img{
+    width: 68px;
+    height: auto;
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,.5));
+    transform: translateX(-18px);
+}
+
+/* =================== menu button ====================== */
+.menuBtn{
+  width: 65px;
+  height: 44px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transform: translateY(-40px);
+}
+
+.menuBtn img{
+  width: 78px;
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.8));
+}
+
+
+/* 画面暗くする */
+.overlay{
+  position: fixed;
+  inset:0;
+  background: rgba(0,0,0,.45);
+  z-index: 60;
+}
+
+/* ==================== MENU-MODAL ====================== */
+.menuModal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(84vw, 360px);
+  height: 100dvh;
+  padding: 24px 48px 48px;
+  background: rgba(10, 30, 40, .75);
+  backdrop-filter: blur(10px);
+  z-index: 70;
+  background-image: url(../assets/bg/IMG_9024.JPG);
+  background-size: cover;
+  background-position: center;
+
+  transform: translateY(-16px);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+.menuModal.is-open{
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menuClose{
+  position:absolute;
+  top: 12px; right: 12px;
+  width:44px; height:44px;
+  border:0; border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  color:#fff; font-size: 26px;
+  cursor:pointer;
+}
+.menuList{
+  margin-top: 72px;
+  display:grid;
+  gap: 18px;
+}
+.menuLink{
+  color:#fff;
+  text-decoration:none;
+  font-size: 26px;
+  letter-spacing: .06em;
+}
+
+.hero{
+  min-height: 100dvh;
+  display:grid;
+  place-items:center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.hero__shade{
+  position:absolute; inset:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.55));
+}
+.hero__content{
+  position: relative;
+  text-align:center;
+  padding-top: 56px;
+}
+.hero__kicker{ margin:0; font-size: 54px; color:#fff;}
+.hero__title{ margin: 6px 0 0; font-size: 54px; font-weight: 500; color:#fff;}
+/* ===== Hero 背景クロスフェード用 ===== */
+
+/* sections */
+.section{
+  padding: 54px 18px 8px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.sectionTitle{
+  margin: 0 0 12px;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  padding-top: 50px;
+}
+
+/* wave合成 */
+.sectionHead{
+  position: relative;
+  height: 74px;
+  margin-top: 40px;
+  margin-bottom: 90px;
+}
+.sectionWave{
+  position:absolute;
+  left: 50%;
+  top: 60px;
+  transform: translate(-50%, -50%) translateX(-40px);
+  width: min(420px, 86%);
+  max-width: 520px;
+  height: auto;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  transition: transform 1s ease, opacity .8s ease;
+}
+.sectionTitle--overlay{
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) translateY(12px);
+  opacity: 0;
+  z-index: 1;
+  margin: 0;
+  text-align: center;
+
+  transition: opacity .7s ease .4s, transform .7s ease .4s;
+}
+
+.card{
+  background: var(--paper);
+  color: #1c2b33;
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  margin: 0 16px;
+}
+
+.countdown{
+  padding: 22px 18px 8px;
+  text-align:center;
+  font-size: 32px;
+}
+.countdown__grid{
+  display:flex;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cdBox{
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 14px;
+  padding: 10px 14px;
+  min-width: 86px;
+}
+.cdNum{ font-size: 32px; font-weight: 600; display:block; }
+.cdUnit{ font-size: 12px; opacity: .9; }
+
+/* =============================　Events　============================*/
+.eventsGrid{
+  display: grid;
+  gap: 18px;
+}
+
+.eventCard{
+  padding: 22px 20px;
+  position: relative;
+  overflow: hidden;
+
+  background-image: url("../assets/section/events.jpeg");
+  background-size: cover;
+  background-position: center;
+
+  background-color: transparent;
+}
+
+.eventTitle{
+  margin: 0;
+  font-size: 26px;
+  color: #238496;
+}
+.eventSub{
+  margin: 2px 0 16px;
+  font-size: 13px;
+  opacity: .7;
+}
+
+.eventDl{
+  margin: 0;
+  display: grid;
+  gap: 14px;
+}
+.eventDl > div{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  padding-bottom: 8px;
+}
+
+.eventTime{
+  font-size: 26px;
+  letter-spacing: .12em;
+  font-family: "Cormorant Garamond", serif;
+}
+
+@media (min-width: 900px){
+  .eventsGrid{
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+  }
+}
+
+/*　============================ Map =============================　*/
+.mapCard{
+  border-radius: var(--radius);
+  overflow:hidden;
+  box-shadow: var(--shadow);
+  margin: 0 16px;
+}
+.mapCard iframe{
+  width:100%;
+  height: 320px;
+  border:0;
+}
+
+/*　---------------------------- ⑨ PC版 ------------------------------　*/
+@media (min-width: 900px){
+  .hero__kicker,
+  .hero__title{ font-size: 72px; }
+  .section{ padding-left: 24px; padding-right: 24px; }
+  .menuModal{
+    width: 360px;
+  }
+}
+
+
+/* ======================== Host：全体 ====================== */
+
+.hostRole{
+  margin: 0;
+  font-size: 16px;
+  letter-spacing: .08em;
+  opacity: .9;
+}
+
+.hostSection{ padding-bottom: 24px; }
+
+.hostGrid2{
+  display: grid;
+  gap: 80px;
+}
+
+.hostBlock{
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+}
+
+.hostRow{
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.hostPhotoWrap{
+  width: 140px;
+  height: 140px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.9);
+  padding: 8px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.18);
+}
+.hostPhoto{
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  object-fit: cover;
+  display: block;
+}
+
+.hostText{ color: #2a7a8a; }
+
+.hostNameJp{
+  margin: 6px 0 0;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: .08em;
+}
+
+.hostMessage--center{
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 2.0;
+  color: rgba(42,122,138,.55);
+  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+  padding: 0 10px;
+}
+
+/* ================= HOST-PC：2列横並び ==================*/
+@media (min-width: 900px){
+  .hostGrid2{
+    grid-template-columns: 1fr 1fr;
+    gap: 46px;
+    align-items: start;
+  }
+
+  .hostRow--reverse{
+    grid-template-columns: 170px 1fr;
+  }
+  .hostRow--reverse .hostText{
+    text-align: left;
+  }
+
+  .hostRow{ grid-template-columns: 170px 1fr; gap: 22px; }
+  .hostPhotoWrap{ width: 170px; height: 170px; padding: 9px; }
+  .hostNameJp{ font-size: 26px; }
+  .hostMessage--center{ font-size: 14px; }
+}
+
+/* ====================== FONT-EN ====================== */
+.font-en{
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.08em;   /* 招待状感 */
+  font-weight: 400;
+}
+
+/*　--------背景レイヤー2枚 HERO-BG-------　*/
+.heroBg{
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 2.4s cubic-bezier(0.4, 0.0, 0.2, 1); 
+  z-index: 0;
+}
+
+/* 最初に見えるのはA */
+.heroBg--a{ opacity: 1; }
+
+/* 既存の重なり順（暗さ・文字は前面） */
+.hero__shade{ z-index: 1; }
+.hero__content{ z-index: 2; }
+
+
+/* ==================== GALLERY２段 ======================= */
+.gallery2rows{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.galleryRowWrap{
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 1行分 */
+.galleryRow{
+  display: flex;
+  gap: 12px;
+  padding: 4px 0;
+  width: max-content;
+}
+
+/* 画像 */
+.galleryRow img{
+  width: 240px;
+  aspect-ratio: 4/ 3;
+  object-fit: cover;
+  border-radius: 16px;
+  flex: 0 0 auto;
+}
+
+/* 上段：右へ流れる */
+.galleryRow--toRight{
+  animation: slideRight 120s linear infinite;
+}
+
+/* 下段：左へ流れる */
+.galleryRow--toLeft{
+  animation: slideLeft 120s linear infinite;
+}
+
+#gallery .gallery2rows{
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+@keyframes slideRight{
+  0%{ transform: translateX(0); }
+  100%{ transform: translateX(-50%); }
+}
+
+@keyframes slideLeft{
+  0%{ transform: translateX(-50%); }
+  100%{ transform: translateX(0); }
+}
+
+@media (min-width: 900px){
+  .galleryRow img{ width: 340px; }
+}
+
+.greetingCard{
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  background-image: url("../assets/section/greeting.jpeg");
+  background-size: cover;
+  background-position: center;
+
+  background-color: transparent;
+}
+
+/* ===================== GREETING ========================== */
+.greetingTitle{
+  margin: 0 0 50px;
+  text-align: center;
+  font-size: 32px;
+  color: #238496;
+}
+
+/* メッセージ本文 */
+.greetingText{
+  margin: 0 0 30px;
+  text-align: center;
+  line-height: 2.1;
+  font-size: 14px;
+}
+
+/* ====================== RSVP ======================== */
+
+.field{ display:grid; gap:6px; margin: 10px 0; }
+.field input, .field select, .field textarea{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.15);
+  font: inherit;
+}
+.btn{
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  border: 0;
+  cursor:pointer;
+  background: rgba(0,120,140,.85);
+  color:#fff;
+  font-weight: 700;
+  font-family: "Shippori Mincho", serif;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.btn--ghost{
+  background: transparent;
+  border: 1px solid rgba(0,120,140,.5);
+  color: rgba(0,120,140,1);
+}
+.btnRow{ display:flex; gap: 10px; }
+.btnRow .btn{ width: 50%; }
+
+.formMsg{ margin: 10px 0 0; color: #b00020; }
+
+.rsvpWrap{
+  padding: 8px 4px 0;
+}
+
+.rsvpWrap .field input,
+.rsvpWrap .field select,
+.rsvpWrap .field textarea{
+  background: rgba(255,255,255,.92);
+}
+
+.rsvpWrap .btn{
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+}
+
+.formHint{
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: .75;
+}
+
+/* 出欠セレクト全体 */
+.attendSelect{
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin: 28px 0 36px;
+}
+
+/* radio本体は隠す */
+.attendSelect input[type="radio"]{
+  display: none;
+}
+
+/* ボタン見た目 */
+.attendSelect label{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(35,132,150,.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  color: #238496;
+  background: rgba(255,255,255,.6);
+  transition: all .3s ease;
+}
+
+/* 日本語 */
+.attendSelect .jp{
+  font-size: 16px;
+  letter-spacing: .08em;
+}
+
+/* 英語 */
+.attendSelect .en{
+  font-size: 14px;
+  margin-top: 4px;
+  opacity: .9;
+}
+
+/* 選択済 */
+.attendSelect input:checked + label{
+  background: #238496;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+  border-color: transparent;
+}
+
+.attendSelect input:checked + label .en{
+  opacity: 1;
+}
+
+@media (max-width: 480px){
+  .attendSelect{
+    gap: 18px;
+  }
+  .attendSelect label{
+    width: 104px;
+    height: 104px;
+  }
+}
+
+.locationName{
+    margin: 18px 0 0;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: .12em;
+    color: #238496;
+}
+
+/* RSVP説明文 */
+.rsvpIntro{
+  text-align: center;
+  margin: 32px 0 40px;
+  color: #2a7a8a;
+  line-height: 2;
+}
+
+.rsvpDate{
+  margin: 16px 0;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+
+/* Entry form タイトル */
+.entryTitle{
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.entryTitle p{
+  margin: 0 0 0;
+  font-size: 28px;
+  color: #2a7a8a;
+}
+
+/* 細い横線 */
+.entryLine{
+  display: inline-block;
+  width: 80%;
+  height: 1px;
+  background: rgba(42,122,138,.5);
+}
+
+.entryLineEnd{
+    display: inline-block;
+  width: 80%;
+  height: 1px;
+  background: rgba(42,122,138,.5);
+  margin-top: 48px;
+}
+
+textarea{
+    resize: none;
+}
+
+/*---------------------------- footer -----------------------------*/
+.footer{
+  padding: 40px 0 60px;
+  text-align:center;
+  opacity: .9;
+}
+
+.thankYou{
+    position: relative;
+    text-align: center;
+    padding: 30px 0 30px;
+}
+
+.thankYou__heart{
+    width: 260px;
+    max-width: 70vw;
+    opacity: .9;
+}
+
+.thankYou__text{
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    color: #2a7a8a;
+    transform: translateY(-15px);
+}
+
+/* スクロールアクション */
+.fadeUp{
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+.fadeUp.is-show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* waveスクロール */
+.sectionHead.is-show .sectionWave{
+  opacity: .9;
+  transform: translate(-50%, -50%) translateX(0);
+}
+
+.sectionHead.is-show .sectionTitle--overlay{
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+/* hover（PC） */
+.btn:hover{
+  filter: brightness(1.05);
+}
+
+/* 押した瞬間 */
+.btn:active{
+  transform: translateY(2px) scale(.98);
+  box-shadow: 0 4px 10px rgba(0,0,0,.25) inset;
+}
+
+.btn--ghost:active{
+  background: rgba(0,120,140,.1);
+}
