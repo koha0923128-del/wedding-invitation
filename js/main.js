@@ -235,7 +235,7 @@ form.addEventListener("submit", async (e)=>{
       fd.append("photoDataUrl", dataUrl);
     }
 
-    postToGAS(fd);
+    await postToGAS(fd);
 
     submitMsg.style.color = "#1c2b33";
     submitMsg.textContent = "送信しました！ありがとうございました。";
@@ -297,25 +297,12 @@ async function fetchAddress(zip7){
   }
 }
 
-function postToGAS(fd){
-  // fetchを使わず、フォームPOSTで送る（CORS回避）
-  const tempForm = document.createElement("form");
-  tempForm.method = "POST";
-  tempForm.action = ENDPOINT_URL;
-  tempForm.target = "hidden_iframe";
-
-  // FormData の中身を hidden input にして詰め替え
-  for (const [key, value] of fd.entries()){
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = key;
-    input.value = String(value);
-    tempForm.appendChild(input);
-  }
-
-  document.body.appendChild(tempForm);
-  tempForm.submit();
-  tempForm.remove();
+async function postToGAS(fd){
+  await fetch(ENDPOINT_URL, {
+    method: "POST",
+    body: fd,
+    mode: "no-cors",
+  });
 }
 
 // =====================
